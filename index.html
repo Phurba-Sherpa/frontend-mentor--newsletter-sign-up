@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+</head>
+
+<body>
+
+  <main>
+    <section class="section_signup">
+      <div class="signup">
+        <picture>
+          <source srcset="./assets/images/illustration-sign-up-desktop.svg" media="(min-width: 678px)" />
+          <img src="./assets/images/illustration-sign-up-mobile.svg" alt="illustration with orange background" />
+        </picture>
+        <div class="signup__content">
+          <h1>Stay updated!</h1>
+          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+          <ul>
+            <li>
+              <img src="./assets/images/icon-list.svg" alt="checked round box with orange bg" />
+              <p>Product discovery and building what matters</p>
+            </li>
+            <li>
+              <img src="./assets/images/icon-list.svg" alt="checked round box with orange bg" />
+              <p>Measuring to ensure updates are a success</p>
+            </li>
+            <li> <img src="./assets/images/icon-list.svg" alt="checked round box with orange bg" />
+              <p>And much more!</p>
+            </li>
+          </ul>
+
+          <form class="signup__form" >
+            <div class="signup__email-box">
+              <div class="signup__helper-text">
+                <label for="email">Email address</label>
+                <p>Valid email required</p>
+              </div>
+              <input id="email" required  type="email" placeholder="email@company.com" autocomplete="off" />
+            </div>
+
+            <button class="btn-sub" type="submit">Subscribe to monthly newsletter</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal">
+    <img src="./assets/images/icon-success.svg" alt="checked logo" />
+    <h1>Thanks for subscribing!</h1>
+    <p>A confirmation email has been sent to <span class="ePlace"></span>. Please open it and click on the button to confirm your subscription.</p>
+    <button class="btn-dismiss">Dismiss message</button>
+  </dialog>
+
+  <script>
+    const modal = document.querySelector('.modal')
+    const subBtn = document.querySelector('.btn-sub')
+    const dismissBtn = document.querySelector('.btn-dismiss')
+
+    subBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      const el = document.querySelector('.ePlace')
+      el.textContent = document.getElementById('email').value
+      modal.showModal()
+    })
+
+    dismissBtn.addEventListener('click', () => {
+      modal.setAttribute('closing', "")
+      modal.addEventListener('animationend', () => {
+        modal.removeAttribute('closing')
+        modal.close()
+      }, {once: true})
+    })
+  </script>
+</body>
+
+</html>
