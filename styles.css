@@ -115,13 +115,11 @@ input:focus {
     outline:  1px solid var(--color-grey-400);
 }
 
-input:invalid {
+input:invalid:focus {
     border: 1px solid var(--color-primary);
-    outline: none;
     background-color: var(--color-primary-50);
     color: var(--color-primary)
 }
-
 
 button {
     font-weight: 700;
@@ -215,7 +213,7 @@ li > img {
     visibility: hidden;
 }
 
-.signup__helper-text:has(+input:is(:invalid)) > p {
+.signup__helper-text:has(+input:is(:invalid:focus)) > p {
     visibility: visible;
     color: var(--color-primary);
 }
@@ -225,15 +223,20 @@ li > img {
     MODAL 
 ====================== */
 .modal {
-    max-width: 50ch;
     border: 0;
     box-shadow: 0 0 .5rem rgba(0, 0, 0, .15);
     padding:6rem;
-    border-radius: 1.2rem;
     inset: 0;
     margin: auto;
 }
 
+@media (min-width: 600px) {
+    .modal {
+    border-radius: 1.2rem;
+    max-width: 50ch;
+    }
+
+}
 .modal> h1 {
     line-height: 1;
     margin-block: 3rem;
@@ -308,7 +311,7 @@ li > img {
 .signup__content {
     padding: 0;
    padding-right: 2em;
-width: 70%;
+    width: 70%;
 }
 }
 
