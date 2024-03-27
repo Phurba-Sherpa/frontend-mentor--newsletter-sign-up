@@ -213,7 +213,7 @@ li > img {
     visibility: hidden;
 }
 
-.signup__helper-text:has(+input:is(:invalid:focus)) > p {
+.signup__helper-text:has(+input:invalid:focus) > p {
     visibility: visible;
     color: var(--color-primary);
 }
